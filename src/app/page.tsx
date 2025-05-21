@@ -1,103 +1,68 @@
-import Image from "next/image";
+// src/app/page.tsx
+import Image from "next/image"; // Keep this import, even if not directly used for images in this snippet
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="bg-white text-gray-800">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-white to-yellow-100 py-16 px-4 sm:py-20 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-yellow-700 leading-tight">
+          Welcome to Basha Home Appliances
+        </h1>
+        <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto px-4">
+          Trusted for over <strong>25 years</strong> in delivering quality home
+          appliances with a commitment to excellence.
+        </p>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Categories */}
+      <section className="py-12 px-4 sm:py-16 md:px-6">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-yellow-700 mb-8 text-center">
+          Explore Our Categories
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          {[
+            { name: "Refrigerators", icon: "🧊" },
+            { name: "Air Conditioners", icon: "❄️" },
+            { name: "Washing Machines", icon: "🌀" },
+            { name: "Microwaves", icon: "🍽️" },
+            { name: "Water Purifiers", icon: "💧" },
+            { name: "Kitchen Appliances", icon: "🍳" },
+          ].map((cat) => (
+            <div
+              key={cat.name}
+              className="bg-yellow-50 border border-yellow-100 shadow-md rounded-2xl p-5 text-center flex flex-col items-center justify-center hover:shadow-lg transition transform hover:scale-105 duration-300"
+            >
+              <div className="text-4xl mb-3">{cat.icon}</div>
+              <h3 className="text-lg sm:text-xl font-medium text-yellow-800">
+                {cat.name}
+              </h3>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* About Section */}
+      <section className="bg-yellow-50 py-12 px-4 sm:py-16 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-yellow-800 mb-4">
+          Why Choose Us?
+        </h2>
+        <p className="max-w-3xl mx-auto text-base sm:text-lg text-gray-700 px-4">
+          With over 25 years of technical experience, we bring you the best in
+          quality, pricing, and support. Our dedicated team ensures every
+          product delivers performance and durability for your home.
+        </p>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-10 bg-white text-center px-4 sm:py-12">
+        <p className="text-base sm:text-lg text-gray-700 mb-4">
+          Browse our top products or reach out to our support.
+        </p>
+        <button className="bg-yellow-600 text-white px-6 py-3 rounded-xl shadow hover:bg-yellow-700 transition transform hover:scale-105 duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+          Shop Now
+        </button>
+      </section>
+    </main>
   );
 }
